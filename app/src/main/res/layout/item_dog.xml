@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="dog"
+            type="com.example.mydogs.model.DogBreed" />
+        
+        <variable
+            name="listener"
+            type="com.example.mydogs.view.DogClickListener" />
+    </data>
+<LinearLayout
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:onClick="@{listener::onDogClicked}"
+    android:background="@drawable/background_selector"
+    android:layout_height="125dp">
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/dogId"
+        android:text="@{String.valueOf(dog.uuid)}"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorAccent"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="3dp"
+        app:cardPreventCornerOverlap="false"
+        app:cardUseCompatPadding="true"
+        >
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="125dp">
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="0dp"
+        android:layout_weight="3"
+        android:layout_height="match_parent"
+        android:imageUrl="@{dog.imageUrl}"
+        android:scaleType="fitXY"
+        android:padding="4dp"/>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="3"
+        android:padding="4dp"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        >
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/average_sans"
+        android:textColor="#1f1f1f"
+        android:text="@{dog.dogBreed}"
+        style="@style/Title"
+        />
+        <TextView
+            android:id="@+id/lifespan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/average_sans"
+            android:textColor="#424040"
+            style="@style/Text"
+            android:text="@{dog.lifeSpan}"
+            />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>
+</layout>
